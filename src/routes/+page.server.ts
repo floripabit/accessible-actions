@@ -10,10 +10,10 @@ export const load: PageServerLoad = async ({ fetch }) => {
 export const actions = {
     getChatGPTAnswer: async ({ request, fetch }) => {
         const data = await request.formData();
-        const prompt = data.get('prompt')?.toString() || "";
+        const actionRequest = data.get('action-request')?.toString() || "";
         const openAIresponse = await fetch(OPENAI_API, {
             method: 'POST',
-            body: JSON.stringify({ prompt })
+            body: JSON.stringify({actionRequest})
         });
         const resp = await openAIresponse.json();
         return { generatedText: resp.choices[0].text };

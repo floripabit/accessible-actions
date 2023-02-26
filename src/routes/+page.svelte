@@ -6,9 +6,9 @@
 </script>
   
 <form method="POST" action="?/getChatGPTAnswer">
-    <label for="prompt">Enter a prompt:</label>
-    <input type="text" name="prompt" bind:value={prompt}>
-    <button type="submit">Generate text</button>
+    <label for="prompt">Peça qual ação você quer que o software realize:</label>
+    <input type="text" name="action-request" bind:value={prompt}>
+    <button type="submit">Veja a key escolhida!</button>
 </form>
 
 {#if form?.generatedText}
