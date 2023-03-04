@@ -1,6 +1,7 @@
 <script lang="ts">
     import type { ActionData } from './$types';
     import { createEventDispatcher, onMount } from 'svelte';
+	import EditableList from '$lib/components/EditableList.svelte';
     
     let prompt = "";
     export let form: ActionData;
@@ -11,9 +12,8 @@
 ;
 
     function startRecognition() {
-        console.log('startinggg');
         if (!recognizing) {
-        //recognition = new webkitwebkitSpeechRecognition();
+        
         const SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
         recognition = new SpeechRecognition();
         recognition.lang = 'pt-BR';
@@ -65,11 +65,9 @@
     <p>{form?.generatedText}</p>
 {/if}
 
+<EditableList />
 
 <button on:click={startRecognition}>Start</button>
 <button on:click={stopRecognition}>Stop</button>
-
-
-
 
 
